@@ -18,7 +18,7 @@ class Entity
   include SystemName
   has_system_name uniqueness_scope: true
 
-  field :inputs, type: Hash, default: {title: String}
+  field :inputs, type: Hash, default: {title: String.new}
 
   belongs_to :project
   has_many :items
