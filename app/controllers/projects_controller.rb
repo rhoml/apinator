@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :find_project, only: [:edit, :update, :destroy]
+  before_filter :find_project, only: [:edit, :update, :destroy, :swagger]
 
   def index
     @projects = projects.page(params[:page])
@@ -37,6 +37,11 @@ class ProjectsController < ApplicationController
     end
 
     redirect_to projects_path
+  end
+
+  def swagger
+    @url = api_project_swagger_doc_path(project: @project.system_name)
+    render layout: "swagger" 
   end
 
   private

@@ -17,10 +17,6 @@ class Entity
     inputs.keys
   end
 
-  def path
-    "/#{self.name}"
-  end
-
   def swagger_doc(base_url = "http//localhost:3000")
     hash = {
       apiVersion: "0.1",

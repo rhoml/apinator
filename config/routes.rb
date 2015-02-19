@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :projects do
     resources :entities
+    member do
+      get 'swagger'
+    end
   end
 
   namespace :api, defaults: {format: :json} do
-    get ':project/swagger_doc', to: 'swagger_doc#show'
-    get ':project/:entity/swagger_doc', to: 'items#swagger_doc'
+    get ':project/swagger_doc', to: 'swagger_doc#show', as: :project_swagger_doc
+    get ':project/:entity/swagger_doc', to: 'items#swagger_doc', as: :entity_swagger_doc
 
     resources :items, path: ':project/:entity'
   end

@@ -1,6 +1,8 @@
 %tr
   %td= project.name
   %td
+    = link_to 'swagger', swagger_project_path(project)
+    |
     = link_to 'entities', project_entities_path(project)
     |
     = link_to 'edit', edit_project_path(project)
