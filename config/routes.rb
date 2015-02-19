@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
+    get ':project/swagger_doc', to: 'swagger_doc#show'
+    get ':project/:entity/swagger_doc', to: 'items#swagger_doc'
+
     resources :items, path: ':project/:entity'
   end
   # The priority is based upon order of creation: first created -> highest priority.

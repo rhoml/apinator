@@ -30,6 +30,10 @@ class API::ItemsController < ApplicationController
     respond_with(@item, attributes)
   end
 
+  def swagger_doc
+    render json: @entity.swagger_doc(request.base_url).as_json
+  end
+
 
   private
 
