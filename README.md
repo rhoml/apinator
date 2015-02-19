@@ -6,8 +6,8 @@ Built your data api.
 
 ## Goals
 
-√ Define simple models
-√ API CRUD for the models
+- √ Define simple models
+- √ API CRUD for the models
 - Swagger doc and swagger ui for this models.
 - APIs.io integration
 - Integration with 3scale
