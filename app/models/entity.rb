@@ -118,4 +118,13 @@ class Entity
     arr
   end
 
+  def apisio
+    {
+      name: name,
+      description: "#{name} restfull data API",
+      image: "",
+      baseURL: "",
+      humanURL: ""
+    }
+  end
 end

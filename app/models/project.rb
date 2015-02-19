@@ -10,8 +10,6 @@ class Project
 
   validates :name, presence: true
 
-
-
   def swagger_doc(base_url = "http//localhost:3000")
     hash = {
       apiVersion: "0.1",
@@ -28,5 +26,27 @@ class Project
       hash[:apis] << { path: "/#{entity.system_name}/swagger_doc", description: entity.name }
     end
     hash
+  end
+
+
+  def apisio_spec(base_url = "http://localhost:3000")
+    {
+      name: "API #{name}",
+      description: "#{name.capitalize} data API",
+      url: "#{base_url}",
+      image: "#{base_url}/logo.png",
+      specificationVersion: "0.14",
+      apis: entities.map(&:apisio),
+       maintainers: [
+        {
+          FN: "Fullname",
+          email: "email"
+        }
+      ],
+      tags: ['data'],
+      include: [],
+      created: "2015-02-19",
+      modified: "2015-02-19"
+    }
   end
 end

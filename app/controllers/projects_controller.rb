@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :find_project, only: [:edit, :update, :destroy, :swagger]
+  before_filter :find_project, only: [:edit, :update, :destroy, :swagger, :apisio]
 
   def index
     @projects = projects.page(params[:page])
@@ -37,6 +37,10 @@ class ProjectsController < ApplicationController
     end
 
     redirect_to projects_path
+  end
+
+  def apisio
+    render json: @project.apisio_spec(request.base_url)
   end
 
   def swagger

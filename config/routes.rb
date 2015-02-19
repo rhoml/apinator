@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :entities
     member do
+      get 'apisio'
       get 'swagger'
     end
   end
