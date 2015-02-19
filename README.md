@@ -11,7 +11,5 @@ Built your data api.
 - Swagger doc and swagger ui for this models.
 - APIs.io integration
 - Integration with 3scale
- 
- 
 - filters and sorts for the api
 - validation for models
