@@ -13,9 +13,16 @@ class Item
       att = params[name]
       if att
         begin
-          if [Fixnum, Float, Boolean].include?(kind.constantize)
-            self[name.to_sym] = att
-          elsif [Date, DateTime].include?(kind.constantize)
+          case kind
+          when "Fixnum"
+            value = att.to_i
+          when "Float"
+            value = att.to_f
+          when "Boolean"
+            value = att ? true : false
+          when "Date"
+            self[name.to_sym] = kind.constantize.parse(att)
+          when "DateTime"
             self[name.to_sym] = kind.constantize.parse(att)
           else
             self[name.to_sym] = kind.constantize.new(att)

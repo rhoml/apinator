@@ -7,10 +7,10 @@ class Entity
            Float,
            Date,
            DateTime,
-           Time,
+           # Time,
            Boolean,
-           Hash,
-           Array,
+           # Hash,
+           # Array,
            # Range,
            # Symbol
   ]
