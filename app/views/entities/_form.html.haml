@@ -1,0 +1,28 @@
+= simple_form_for [@project, entity] do |f|
+  .row
+    .large-3.columns
+      = f.input :name
+      = f.button :submit
+
+    .large-9.columns
+      #inputs-entity
+        %label Inputs
+        - entity.inputs.each_pair do |name, kind|
+          .row
+            .small-4.columns
+              = text_field_tag "inputs[][name]", name
+            .small-4.columns
+              = select_tag "inputs[][kind]", options_for_select(Entity::KINDS, selected: kind)
+            .small-3.columns
+              = link_to 'x', '#', class: 'button tiny radius delete-input-entity'
+      = link_to 'add field', '#', class: 'button tiny radius add-input-entity'
+
+
+#input-entity-template{style: 'display:none'}
+  .row
+    .small-4.columns
+      = text_field_tag "inputs[][name]"
+    .small-4.columns
+      = select_tag "inputs[][kind]", options_for_select(Entity::KINDS)
+    .small-3.columns
+      = link_to 'x', '#', class: 'button tiny radius delete-input-entity'

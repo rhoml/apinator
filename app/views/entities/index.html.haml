@@ -1,0 +1,13 @@
+- title "Entities"
+- if @entities.present?
+  %table
+    %thead
+      %tr
+        %th Name
+        %th
+    %tbody
+      = render @entities
+
+= paginate @entities
+
+= link_to 'new entity', new_project_entity_path, class: :button

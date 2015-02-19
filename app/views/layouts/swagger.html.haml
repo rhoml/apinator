@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "Silfide"
+    %meta{content: content_for?(:description) ? yield(:description) : "Silfide", name: "description"}/
+    = stylesheet_link_tag "swagger", media: "all"
+    = javascript_include_tag "swagger"
+    = csrf_meta_tags
+  %body
+    = yield
+

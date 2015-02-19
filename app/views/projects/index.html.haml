@@ -1,0 +1,13 @@
+- title "Projects"
+- if @projects.present?
+  %table
+    %thead
+      %tr
+        %th Name
+        %th
+    %tbody
+      = render @projects
+
+= paginate @projects
+
+= link_to 'new project', new_project_path, class: :button
