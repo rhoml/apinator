@@ -2,12 +2,23 @@ class Entity
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  KINDS = [NUMBER = :number, STRING = :string, DATETIME = :datetime]
+  KINDS = [String,
+           Fixnum,
+           Float,
+           Date,
+           DateTime,
+           Time,
+           Boolean,
+           Hash,
+           Array,
+           # Range,
+           # Symbol
+  ]
 
   include SystemName
   has_system_name uniqueness_scope: true
 
-  field :inputs, type: Hash, default: {title: STRING}
+  field :inputs, type: Hash, default: {title: String}
 
   belongs_to :project
   has_many :items
