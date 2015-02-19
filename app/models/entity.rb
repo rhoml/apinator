@@ -32,19 +32,45 @@ class Entity
           operations: [
             {
               method: "GET",
-              summary: "List #{name}",
-              nickname: "list_#{system_name}"
+              summary: "List #{name.pluralize}",
+              nickname: "index",
+              parameters: search_params
             },
             {
               method: "POST",
-              summary: "Create #{name}",
-              nickname: "create_#{system_name}",
+              summary: "Create a #{name.singularize}",
+              nickname: "create",
               parameters: entity_params
+            }
+          ]
+        },
+        {
+          path: "/#{system_name}/{id}",
+          operations: [
+            {
+              method: "GET",
+              summary: "Find a #{name.singularize}",
+              nickname: "show",
+              parameters: get_params
+            },
+            {
+              method: "PUT",
+              summary: "Modify a #{name.singularize}",
+              nickname: "update",
+              parameters: get_params + entity_params
+            },
+            {
+              method: "DELETE",
+              summary: "Destroy a #{name.singularize}",
+              nickname: "destroy",
+              parameters: get_params
             }
           ]
         }
     ],
-    info: {},
+    info: {
+      name: "#{name} API data",
+    },
     basePath: "#{base_url}/api/#{project.system_name}",
     resourcePath: "/#{system_name}"
     }
@@ -52,6 +78,35 @@ class Entity
 
   end
 
+  def get_params
+    [
+      {
+        name: "id",
+        required: true,
+        paramType: "path",
+        type: "string"
+      }
+    ]
+  end
+
+  def search_params
+    [
+      {
+        name: "page",
+        required: false,
+        paramType: "query",
+        type: "integer",
+        defaultValue: 1
+      },
+      {
+        name: "per_page",
+        required: false,
+        paramType: "query",
+        type: "integer",
+        defaultValue: 50
+      }
+    ]
+  end
 
   def entity_params
     arr = []
