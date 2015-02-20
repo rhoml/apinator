@@ -32,7 +32,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'swagger-ui_rails'
+gem 'swagger-ui_rails', git: 'git@github.com:3scale/swagger-ui_rails.git'
 
 gem 'protected_attributes'
 # Use ActiveModel has_secure_password

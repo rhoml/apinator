@@ -27,6 +27,17 @@ class Entity
     inputs.keys
   end
 
+
+  def filtered_items(params)
+    scope = self.items
+    inputs.each do |name, kind|
+      if att = params[name]
+        scope = scope.where({name => Casting::parse(att, kind.to_s)})
+      end
+    end
+    scope
+  end
+
   def swagger_doc(base_url = "http//localhost:3000")
     hash = {
       apiVersion: "0.1",
@@ -40,7 +51,7 @@ class Entity
               method: "GET",
               summary: "List #{name.pluralize}",
               nickname: "index",
-              parameters: search_params
+              parameters: paginate_params + filter_params
             },
             {
               method: "POST",
@@ -95,7 +106,18 @@ class Entity
     ]
   end
 
-  def search_params
+  def filter_params
+    inputs.map do |name, kind|
+      {
+        name: name,
+        required: false,
+        paramType: "query",
+        type: kind
+      }
+    end
+  end
+
+  def paginate_params
     [
       {
         name: "page",
