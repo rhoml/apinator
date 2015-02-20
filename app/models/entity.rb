@@ -128,13 +128,15 @@ class Entity
     arr
   end
 
-  def apisio
+  def apisio_spec(base_url)
     {
-      name: name,
+      name: "API #{name}",
       description: "#{name} restfull data API",
-      image: "",
-      baseURL: "",
-      humanURL: ""
+      image: "#{base_url}/logo.png",
+      baseURL: base_url,
+      humanURL: base_url,
+      properties:[],
+      contact:[]
     }
   end
 end

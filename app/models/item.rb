@@ -34,7 +34,6 @@ class Item
         rescue Exception => e
           p e
         end
-
       end
     end
   end

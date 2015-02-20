@@ -36,17 +36,17 @@ class Project
       url: "#{base_url}",
       image: "#{base_url}/logo.png",
       specificationVersion: "0.14",
-      apis: entities.map(&:apisio),
+      apis: entities.map{|x| x.apisio_spec(base_url)},
        maintainers: [
         {
           FN: "Fullname",
-          email: "email"
+          email: user.email
         }
       ],
       tags: ['data'],
       include: [],
-      created: "2015-02-19",
-      modified: "2015-02-19"
+      created: created_at.to_date.to_s(:db),
+      modified: updated_at.to_date.to_s(:db)
     }
   end
 end
