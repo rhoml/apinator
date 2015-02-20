@@ -14,11 +14,6 @@ class ProjectsController < ApplicationController
   def create
     @project = projects.build(project_params)
     if @project.save
-
-
-      uri = URI('http://apis.io/api/apis')
-      Net::HTTP.post_form(uri, 'url' => 'https://apinator.herokuapp.com/apis.json')
-
       redirect_to projects_path, notice: "Project created"
     else
       render 'new'

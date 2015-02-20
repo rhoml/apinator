@@ -29,6 +29,7 @@ class Project
   end
 
 
+  # TODO
   def apisio_spec(base_url = "http://localhost:3000")
     {
       name: "API #{name}",
