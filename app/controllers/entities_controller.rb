@@ -9,7 +9,7 @@ class EntitiesController < ApplicationController
   end
 
   def new
-    @entity = entities.build
+    @entity = entities.new
   end
 
   def create

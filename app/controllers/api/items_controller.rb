@@ -8,7 +8,7 @@ class API::ItemsController < ApplicationController
   before_filter :find_item, only: [:show, :update, :destroy]
 
   def index
-    @items = @entity.items.page(params[:page]).per(params[:per_page]||50)
+    @items = @entity.items.filters(params).page(params[:page]).per(params[:per_page]||50)
     respond_with(@items, attributes)
   end
 

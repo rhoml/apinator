@@ -56,3 +56,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :procution do
+  gem 'rollbar', '~> 1.4.2'
+end
