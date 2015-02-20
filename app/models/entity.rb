@@ -23,7 +23,6 @@ class Entity
   belongs_to :project
   has_many :items
 
-
   def keys
     inputs.keys
   end

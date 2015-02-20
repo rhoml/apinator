@@ -8,6 +8,10 @@ class Item
     _id.to_s
   end
 
+  def self.filters(params)
+    self
+  end
+
   def assing_params(params)
     entity.inputs.each do |name, kind|
       att = params[name]
@@ -33,10 +37,5 @@ class Item
 
       end
     end
-
-
-    # params.slice(*entity.keys).each do |key, value|
-      # self[key.to_sym] = value
-    # end
   end
 end
